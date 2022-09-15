@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Loader for show progress indicator
+/// Loader to show progress indicator.
 class Loader extends StatelessWidget {
   const Loader({super.key});
 

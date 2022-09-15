@@ -28,7 +28,6 @@ class Home extends StatelessWidget {
           state.maybeMap(
             failure: (state) {
               final error = state.networkException;
-
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(

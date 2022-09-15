@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shop/presentation/widgets/loaders/loader.dart';
 
 /// Container for show product.
-/// [title],[description] about Product.
+/// Information [title],[description] about product.
 /// Image internet url [imageUrl].
 class ProductContainer extends StatelessWidget {
   const ProductContainer({

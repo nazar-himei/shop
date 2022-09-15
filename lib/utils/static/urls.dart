@@ -1,3 +1,4 @@
+/// Urls provide all endpoint for API.
 class Urls {
   const Urls._();
   static const base = 'https://api.escuelajs.co';

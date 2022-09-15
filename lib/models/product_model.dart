@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-
 part 'product_model.g.dart';
 
 @HiveType(typeId: 0)
@@ -16,9 +15,7 @@ class ProductModel extends HiveObject {
         title: map?['title'] as String,
         description: map?['description'] as String,
         images: (map?['images'] as List<dynamic>?)
-            ?.map(
-              (e) => e as String,
-            )
+            ?.map((e) => e as String)
             .toList(),
       );
 

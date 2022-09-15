@@ -22,7 +22,7 @@ class ShopCubit extends Cubit<ShopState> {
   late final ProductStorage _productStorage;
 
   /// Fetch products from repository.
-  /// If a user has a bad request data will be loading from the storage.
+  /// If a user has a bad request data will be loading from the database.
   Future<void> fetchProducts() async {
     emit(const ShopState.loading());
 
@@ -44,8 +44,8 @@ class ShopCubit extends Cubit<ShopState> {
     );
   }
 
-  /// Add products to storage.
-  /// [products] Data which will be added to database.
+  /// Add products to database.
+  /// Data [products] to be added to database.
   /// [forceAddProducts] Сlean up database before save data [products].
   Future<void> _addProductsToBox(
     List<ProductModel> products, {

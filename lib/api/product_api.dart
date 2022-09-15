@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
+/// ProductAPI provide methods to work wiht API
 @injectable
 class ProductAPI {
   const ProductAPI(Dio dio) : _dio = dio;

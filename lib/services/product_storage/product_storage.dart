@@ -2,12 +2,12 @@ import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shop/models/product_model.dart';
 
-/// [ProductStorage] Provide function for work with Hive(database).
+/// [ProductStorage] Provide functions for work with Hive(database).
 @lazySingleton
 class ProductStorage {
   static const _boxName = 'product';
 
-  /// Open Product Box
+  /// Open Box Product
   Future<Box<dynamic>> productBox() => Hive.openBox(_boxName);
 
   // Get products from storage
