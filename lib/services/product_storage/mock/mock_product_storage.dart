@@ -1,8 +1,8 @@
 import 'package:mocktail/mocktail.dart';
 import 'package:shop/repositories/product_repository/mock/mock_product_repository.dart';
-import 'package:shop/services/product_storage/product_storage.dart';
+import 'package:shop/services/product_storage/product_storage_impl.dart';
 
-class MockProductStorage extends Mock implements ProductStorage {}
+class MockProductStorage extends Mock implements ProductStorageImpl {}
 
 /// Fake answer for method [mockProductStorage.getProducts()]
 void fakeAnswerProductStorageGetProducts(
@@ -23,7 +23,7 @@ void fakeAnswerProductStorageAddProducts(
     (_) => Future<void>.value(),
   );
 
-  when(() => mockProductStorage.dropBox()).thenAnswer(
+  when(() => mockProductStorage.deleteAllProducts()).thenAnswer(
     (_) => Future<void>.value(),
   );
 }

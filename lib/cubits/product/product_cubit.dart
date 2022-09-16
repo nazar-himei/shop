@@ -3,7 +3,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shop/models/product_model.dart';
 import 'package:shop/repositories/product_repository/base_product_repository.dart';
-import 'package:shop/services/product_storage/product_storage.dart';
+import 'package:shop/services/product_storage/base_product_storage.dart';
+import 'package:shop/services/product_storage/product_storage_impl.dart';
 import 'package:shop/utils/network/network_exception.dart';
 
 part 'product_cubit.freezed.dart';
@@ -13,13 +14,13 @@ part 'product_state.dart';
 class ShopCubit extends Cubit<ShopState> {
   ShopCubit(
     IProductRepository productRepository,
-    ProductStorage productStorage,
+    ProductStorageImpl productStorage,
   )   : _productRepository = productRepository,
         _productStorage = productStorage,
         super(const ShopState.initial());
 
   late final IProductRepository _productRepository;
-  late final ProductStorage _productStorage;
+  late final IProductStorage _productStorage;
 
   /// Fetch products from repository.
   /// If a user has a bad request data will be loading from the database.
@@ -52,7 +53,7 @@ class ShopCubit extends Cubit<ShopState> {
     bool forceAddProducts = false,
   }) async {
     if (forceAddProducts) {
-      await _productStorage.dropBox();
+      await _productStorage.deleteAllProducts();
     }
 
     await _productStorage.addAllProducts(products);

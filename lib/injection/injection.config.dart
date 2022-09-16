@@ -14,7 +14,7 @@ import '../cubits/product/product_cubit.dart' as _i9;
 import '../repositories/product_repository/base_product_repository.dart' as _i7;
 import '../repositories/product_repository/product_repository_impl.dart' as _i8;
 import '../routes/app_route.gr.dart' as _i3;
-import '../services/product_storage/product_storage.dart' as _i6;
+import '../services/product_storage/product_storage_impl.dart' as _i6;
 import 'modules/basic_module.dart'
     as _i10; // ignore_for_file: unnecessary_lambdas
 
@@ -37,12 +37,12 @@ Future<_i1.GetIt> $initGetIt(
     preResolve: true,
   );
   gh.factory<_i5.ProductAPI>(() => _i5.ProductAPI(get<_i4.Dio>()));
-  gh.lazySingleton<_i6.ProductStorage>(() => _i6.ProductStorage());
+  gh.lazySingleton<_i6.ProductStorageImpl>(() => _i6.ProductStorageImpl());
   gh.factory<_i7.IProductRepository>(
       () => _i8.ProductRepositoryImpl(get<_i5.ProductAPI>()));
   gh.factory<_i9.ShopCubit>(() => _i9.ShopCubit(
         get<_i7.IProductRepository>(),
-        get<_i6.ProductStorage>(),
+        get<_i6.ProductStorageImpl>(),
       ));
   return get;
 }

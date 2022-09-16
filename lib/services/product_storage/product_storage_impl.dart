@@ -1,16 +1,20 @@
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shop/models/product_model.dart';
+import 'package:shop/services/product_storage/base_product_storage.dart';
 
-/// [ProductStorage] Provide functions for work with Hive(database).
+/// [ProductStorageImpl] Provide functions for work with Hive(database).
 @lazySingleton
-class ProductStorage {
+@Injectable(as: IProductStorage)
+class ProductStorageImpl implements IProductStorage {
   static const _boxName = 'product';
 
   /// Open Box Product
   Future<Box<dynamic>> productBox() => Hive.openBox(_boxName);
 
-  // Get products from storage
+  @override
+
+  /// Get products from storage
   Future<List<ProductModel>> getProducts() async {
     final box = await productBox();
 
@@ -19,21 +23,34 @@ class ProductStorage {
     );
   }
 
-  // Add all your products to storage
+  @override
+
+  /// Add all your products to storage
   Future<void> addAllProducts(List<ProductModel> productModel) async {
     final box = await productBox();
     await box.add(productModel);
   }
 
-  // Delete element from storage
-  Future<void> deletFromBox(int index) async {
+  @override
+
+  /// Delete element from storage
+  Future<void> deleteProduct(int index) async {
     final box = await productBox();
     await box.deleteAt(index);
   }
 
-  // Delete all elements from storage
-  Future<void> dropBox() async {
+  @override
+
+  /// Delete all elements from storage
+  Future<void> deleteAllProducts() async {
     final box = await productBox();
     await box.clear();
+  }
+
+  /// Get detail product from storage.
+  @override
+  Future<ProductModel> getProdcut(int index) async {
+    final product = await productBox();
+    return product.getAt(index);
   }
 }

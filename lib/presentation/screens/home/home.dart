@@ -43,17 +43,19 @@ class Home extends StatelessWidget {
           context,
           state,
         ) {
+          final fetchProducts = context.read<ShopCubit>().fetchProducts;
+
           return RefreshIndicator(
-            onRefresh: context.read<ShopCubit>().fetchProducts,
+            onRefresh: fetchProducts,
             child: state.maybeWhen(
               loading: () => const Loader(),
               failure: (_, products) => ProductListView(
                 products: products,
-                onTapLoadData: context.read<ShopCubit>().fetchProducts,
+                onTapLoadData: fetchProducts,
               ),
               success: (products) => ProductListView(
                 products: products,
-                onTapLoadData: context.read<ShopCubit>().fetchProducts,
+                onTapLoadData: fetchProducts,
               ),
               orElse: () => const SizedBox(),
             ),

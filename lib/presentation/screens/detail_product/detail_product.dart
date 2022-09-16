@@ -19,33 +19,29 @@ class DetailsProduct extends StatelessWidget {
         centerTitle: true,
         title: Text(product.title),
       ),
-      body: Column(
+      body: ListView(
         children: [
           Expanded(
             child: ImageContainer(
+              height: 290,
               width: double.infinity,
+              boxFit: BoxFit.fill,
               imageUrl: product.images?.first ?? '',
             ),
           ),
           Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 10,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product.title,
-                    style: textStyles.headline6,
-                  ),
-                  Text(
-                    product.description,
-                    style: textStyles.subtitle1,
-                  ),
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product.title,
+                  style: textStyles.headline6,
+                ),
+                Text(
+                  product.description,
+                  style: textStyles.subtitle1,
+                ),
+              ],
             ),
           )
         ],

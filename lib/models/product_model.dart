@@ -27,11 +27,4 @@ class ProductModel extends HiveObject {
   final String description;
   @HiveField(3)
   final List<String>? images;
-
-  Map<String, dynamic> toMap() => {
-        'id': id,
-        'title': title,
-        'description': description,
-        'images': images,
-      };
 }

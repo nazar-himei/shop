@@ -20,7 +20,8 @@ class ProductContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      alignment: Alignment.center,
+      height: 95,
       margin: const EdgeInsets.symmetric(
         vertical: 12,
       ),
@@ -38,24 +39,24 @@ class ProductContainer extends StatelessWidget {
       ),
       child: ListTile(
         contentPadding: EdgeInsets.zero,
-        visualDensity: const VisualDensity(
-          horizontal: -2,
-          vertical: 4,
-        ),
-        leading: CachedNetworkImage(
-          imageUrl: imageUrl ?? '',
-          height: 75,
-          width: 75,
-          imageBuilder: (context, imageProvider) => DecoratedBox(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: imageProvider,
-                fit: BoxFit.contain,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: CachedNetworkImage(
+            imageUrl: imageUrl ?? '',
+            height: 75,
+            width: 75,
+            imageBuilder: (context, imageProvider) => DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                  image: imageProvider,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
+            placeholder: (_, __) => const Loader(),
+            errorWidget: (_, __, ___) => const Icon(Icons.error),
           ),
-          placeholder: (_, __) => const Loader(),
-          errorWidget: (_, __, ___) => const Icon(Icons.error),
         ),
         title: Text(title),
         subtitle: Text(description),
