@@ -21,9 +21,7 @@ mixin _$ShopState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ProductModel> products) success,
-    required TResult Function(
-            NetworkException? networkException, List<ProductModel> products)
-        failure,
+    required TResult Function(NetworkException? networkException) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,9 +29,7 @@ mixin _$ShopState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ProductModel> products)? success,
-    TResult Function(
-            NetworkException? networkException, List<ProductModel> products)?
-        failure,
+    TResult Function(NetworkException? networkException)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,9 +37,7 @@ mixin _$ShopState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ProductModel> products)? success,
-    TResult Function(
-            NetworkException? networkException, List<ProductModel> products)?
-        failure,
+    TResult Function(NetworkException? networkException)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,9 +125,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ProductModel> products) success,
-    required TResult Function(
-            NetworkException? networkException, List<ProductModel> products)
-        failure,
+    required TResult Function(NetworkException? networkException) failure,
   }) {
     return initial();
   }
@@ -144,9 +136,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ProductModel> products)? success,
-    TResult Function(
-            NetworkException? networkException, List<ProductModel> products)?
-        failure,
+    TResult Function(NetworkException? networkException)? failure,
   }) {
     return initial?.call();
   }
@@ -157,9 +147,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ProductModel> products)? success,
-    TResult Function(
-            NetworkException? networkException, List<ProductModel> products)?
-        failure,
+    TResult Function(NetworkException? networkException)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -252,9 +240,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ProductModel> products) success,
-    required TResult Function(
-            NetworkException? networkException, List<ProductModel> products)
-        failure,
+    required TResult Function(NetworkException? networkException) failure,
   }) {
     return loading();
   }
@@ -265,9 +251,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ProductModel> products)? success,
-    TResult Function(
-            NetworkException? networkException, List<ProductModel> products)?
-        failure,
+    TResult Function(NetworkException? networkException)? failure,
   }) {
     return loading?.call();
   }
@@ -278,9 +262,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ProductModel> products)? success,
-    TResult Function(
-            NetworkException? networkException, List<ProductModel> products)?
-        failure,
+    TResult Function(NetworkException? networkException)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -401,9 +383,7 @@ class _$_Success implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ProductModel> products) success,
-    required TResult Function(
-            NetworkException? networkException, List<ProductModel> products)
-        failure,
+    required TResult Function(NetworkException? networkException) failure,
   }) {
     return success(products);
   }
@@ -414,9 +394,7 @@ class _$_Success implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ProductModel> products)? success,
-    TResult Function(
-            NetworkException? networkException, List<ProductModel> products)?
-        failure,
+    TResult Function(NetworkException? networkException)? failure,
   }) {
     return success?.call(products);
   }
@@ -427,9 +405,7 @@ class _$_Success implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ProductModel> products)? success,
-    TResult Function(
-            NetworkException? networkException, List<ProductModel> products)?
-        failure,
+    TResult Function(NetworkException? networkException)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -489,7 +465,7 @@ abstract class _Success implements ShopState {
 abstract class _$$ErrorCopyWith<$Res> {
   factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
       __$$ErrorCopyWithImpl<$Res>;
-  $Res call({NetworkException? networkException, List<ProductModel> products});
+  $Res call({NetworkException? networkException});
 }
 
 /// @nodoc
@@ -504,17 +480,12 @@ class __$$ErrorCopyWithImpl<$Res> extends _$ShopStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? networkException = freezed,
-    Object? products = freezed,
   }) {
     return _then(_$Error(
       networkException == freezed
           ? _value.networkException
           : networkException // ignore: cast_nullable_to_non_nullable
               as NetworkException?,
-      products == freezed
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductModel>,
     ));
   }
 }
@@ -522,21 +493,14 @@ class __$$ErrorCopyWithImpl<$Res> extends _$ShopStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Error implements Error {
-  const _$Error(this.networkException, final List<ProductModel> products)
-      : _products = products;
+  const _$Error(this.networkException);
 
   @override
   final NetworkException? networkException;
-  final List<ProductModel> _products;
-  @override
-  List<ProductModel> get products {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_products);
-  }
 
   @override
   String toString() {
-    return 'ShopState.failure(networkException: $networkException, products: $products)';
+    return 'ShopState.failure(networkException: $networkException)';
   }
 
   @override
@@ -545,15 +509,12 @@ class _$Error implements Error {
         (other.runtimeType == runtimeType &&
             other is _$Error &&
             const DeepCollectionEquality()
-                .equals(other.networkException, networkException) &&
-            const DeepCollectionEquality().equals(other._products, _products));
+                .equals(other.networkException, networkException));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(networkException),
-      const DeepCollectionEquality().hash(_products));
+      runtimeType, const DeepCollectionEquality().hash(networkException));
 
   @JsonKey(ignore: true)
   @override
@@ -566,11 +527,9 @@ class _$Error implements Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ProductModel> products) success,
-    required TResult Function(
-            NetworkException? networkException, List<ProductModel> products)
-        failure,
+    required TResult Function(NetworkException? networkException) failure,
   }) {
-    return failure(networkException, products);
+    return failure(networkException);
   }
 
   @override
@@ -579,11 +538,9 @@ class _$Error implements Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ProductModel> products)? success,
-    TResult Function(
-            NetworkException? networkException, List<ProductModel> products)?
-        failure,
+    TResult Function(NetworkException? networkException)? failure,
   }) {
-    return failure?.call(networkException, products);
+    return failure?.call(networkException);
   }
 
   @override
@@ -592,13 +549,11 @@ class _$Error implements Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ProductModel> products)? success,
-    TResult Function(
-            NetworkException? networkException, List<ProductModel> products)?
-        failure,
+    TResult Function(NetworkException? networkException)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure(networkException, products);
+      return failure(networkException);
     }
     return orElse();
   }
@@ -642,11 +597,9 @@ class _$Error implements Error {
 }
 
 abstract class Error implements ShopState {
-  const factory Error(final NetworkException? networkException,
-      final List<ProductModel> products) = _$Error;
+  const factory Error(final NetworkException? networkException) = _$Error;
 
   NetworkException? get networkException;
-  List<ProductModel> get products;
   @JsonKey(ignore: true)
   _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
 }

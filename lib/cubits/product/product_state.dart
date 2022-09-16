@@ -7,6 +7,5 @@ abstract class ShopState with _$ShopState {
   const factory ShopState.success(List<ProductModel> products) = _Success;
   const factory ShopState.failure(
     NetworkException? networkException,
-    List<ProductModel> products,
   ) = Error;
 }

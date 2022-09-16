@@ -52,8 +52,10 @@ void main() {
         },
         expect: () => [
           const ShopState.loading(),
-          ShopState.failure(
-            const NetworkException(),
+          const ShopState.failure(
+            NetworkException(),
+          ),
+          ShopState.success(
             exampleProducts,
           ),
         ],

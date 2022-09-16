@@ -49,10 +49,6 @@ class Home extends StatelessWidget {
             onRefresh: fetchProducts,
             child: state.maybeWhen(
               loading: () => const Loader(),
-              failure: (_, products) => ProductListView(
-                products: products,
-                onTapLoadData: fetchProducts,
-              ),
               success: (products) => ProductListView(
                 products: products,
                 onTapLoadData: fetchProducts,

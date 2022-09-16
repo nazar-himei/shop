@@ -21,15 +21,16 @@ class DetailsProduct extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Expanded(
-            child: ImageContainer(
-              height: 290,
-              width: double.infinity,
-              boxFit: BoxFit.fill,
-              imageUrl: product.images?.first ?? '',
-            ),
+          ImageContainer(
+            height: 295,
+            width: double.infinity,
+            boxFit: BoxFit.fill,
+            imageUrl: product.images?.first ?? '',
           ),
-          Expanded(
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 5,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -37,9 +38,14 @@ class DetailsProduct extends StatelessWidget {
                   product.title,
                   style: textStyles.headline6,
                 ),
-                Text(
-                  product.description,
-                  style: textStyles.subtitle1,
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 15,
+                  ),
+                  child: Text(
+                    product.description,
+                    style: textStyles.subtitle1,
+                  ),
                 ),
               ],
             ),

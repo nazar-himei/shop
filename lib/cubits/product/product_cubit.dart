@@ -33,9 +33,10 @@ class ShopCubit extends Cubit<ShopState> {
       (productsData) => productsData.fold(
         (exception) async {
           final networkexception = exception as NetworkException;
-          final storageProducts = await _productStorage.getProducts();
+          emit(ShopState.failure(networkexception));
 
-          emit(ShopState.failure(networkexception, storageProducts));
+          final storageProducts = await _productStorage.getProducts();
+          emit(ShopState.success(storageProducts));
         },
         (products) {
           _addProductsToBox(products, forceAddProducts: true);
