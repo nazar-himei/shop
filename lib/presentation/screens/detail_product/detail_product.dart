@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:shop/models/product_model.dart';
 import 'package:shop/presentation/widgets/containers/image_container.dart';
 
+/// Page [DetailsProduct] has information about product
 class DetailsProduct extends StatelessWidget {
   const DetailsProduct({
     super.key,
     required this.product,
   });
 
+  /// Product Model product
   final ProductModel product;
 
   @override

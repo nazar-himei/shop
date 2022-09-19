@@ -4,6 +4,7 @@ import 'package:shop/cubits/product/product_cubit.dart';
 import 'package:shop/presentation/screens/home/product_list.dart';
 import 'package:shop/presentation/widgets/loaders/loader.dart';
 
+/// Page [Home] show all products
 class Home extends StatelessWidget {
   const Home({super.key});
 
@@ -39,10 +40,7 @@ class Home extends StatelessWidget {
             orElse: () {},
           );
         },
-        builder: (
-          context,
-          state,
-        ) {
+        builder: (context, state) {
           final fetchProducts = context.read<ShopCubit>().fetchProducts;
 
           return RefreshIndicator(

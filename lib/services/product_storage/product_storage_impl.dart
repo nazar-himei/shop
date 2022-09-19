@@ -12,9 +12,8 @@ class ProductStorageImpl implements IProductStorage {
   /// Open Box Product
   Future<Box<dynamic>> productBox() => Hive.openBox(_boxName);
 
-  @override
-
   /// Get products from storage
+  @override
   Future<List<ProductModel>> getProducts() async {
     final box = await productBox();
 
@@ -23,25 +22,22 @@ class ProductStorageImpl implements IProductStorage {
     );
   }
 
-  @override
-
   /// Add all your products to storage
+  @override
   Future<void> addAllProducts(List<ProductModel> productModel) async {
     final box = await productBox();
     await box.add(productModel);
   }
 
-  @override
-
   /// Delete element from storage
+  @override
   Future<void> deleteProduct(int index) async {
     final box = await productBox();
     await box.deleteAt(index);
   }
 
-  @override
-
   /// Delete all elements from storage
+  @override
   Future<void> deleteAllProducts() async {
     final box = await productBox();
     await box.clear();
@@ -49,7 +45,7 @@ class ProductStorageImpl implements IProductStorage {
 
   /// Get detail product from storage.
   @override
-  Future<ProductModel> getProdcut(int index) async {
+  Future<ProductModel> getProduct(int index) async {
     final product = await productBox();
     return product.getAt(index);
   }

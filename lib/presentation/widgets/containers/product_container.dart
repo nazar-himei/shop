@@ -13,8 +13,13 @@ class ProductContainer extends StatelessWidget {
     this.imageUrl,
   });
 
+  /// Title of product
   final String title;
+
+  /// Description of product
   final String description;
+
+  /// Image url of product
   final String? imageUrl;
 
   @override

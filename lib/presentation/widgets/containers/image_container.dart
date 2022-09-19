@@ -18,9 +18,16 @@ class ImageContainer extends StatelessWidget {
     this.boxFit = BoxFit.contain,
   });
 
+  /// [imageUrl] For load image from internet
   final String imageUrl;
+
+  /// Height of container image
   final double height;
+
+  /// Width of container image
   final double width;
+
+  /// Box fit of container image
   final BoxFit boxFit;
 
   @override

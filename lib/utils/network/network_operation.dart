@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:shop/utils/network/network_exception.dart';
 
+/// Template method for request safety network to API
 typedef NetworkOperation<T> = Future<T> Function();
 
 /// Template for a safe request to API.

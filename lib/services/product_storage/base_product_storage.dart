@@ -6,7 +6,7 @@ abstract class IProductStorage {
   Future<List<ProductModel>> getProducts();
 
   /// Get detail product from database.
-  Future<ProductModel> getProdcut(int index);
+  Future<ProductModel> getProduct(int index);
 
   /// Add new products to database.
   Future<void> addAllProducts(List<ProductModel> products);

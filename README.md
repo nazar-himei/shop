@@ -1,4 +1,8 @@
-## Run Project
+## Requirements of project
+- Flutter: 3.3.2
+- Dart: 2.18.1
+
+## Run project
 
 Open your IDE(Android Studio)
 

@@ -13,8 +13,13 @@ class ProductListView extends StatelessWidget {
     this.onTapLoadData,
   });
 
+  /// Products for show list
   final List<ProductModel> products;
-  final VoidCallback? onTap;
+
+  /// OnTap on detail product
+  final ValueChanged<ProductModel>? onTap;
+
+  /// OnTap load products
   final VoidCallback? onTapLoadData;
 
   @override
@@ -49,12 +54,13 @@ class ProductListView extends StatelessWidget {
         final product = products.elementAt(i);
 
         return GestureDetector(
-          onTap: onTap ??
-              () => getIt<AppRouter>().navigate(
-                    DetailsProductRoute(
-                      product: product,
-                    ),
+          onTap: () => onTap != null
+              ? onTap!(product)
+              : getIt<AppRouter>().navigate(
+                  DetailsProductRoute(
+                    product: product,
                   ),
+                ),
           child: ProductContainer(
             title: product.title,
             description: product.description,

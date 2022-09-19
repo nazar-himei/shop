@@ -5,6 +5,9 @@ class NetworkException implements Exception {
     this.message,
   });
 
+  /// Network status code
   final int? statusCode;
+
+  /// Network messages exception
   final String? message;
 }
